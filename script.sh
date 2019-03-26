@@ -1,0 +1,48 @@
+#!/bin/bash
+
+echo "export HISTTIMEFORMAT=\"%d/%m/%y %T \"" >> ~/.bashrc
+echo "[*] History format in ~/.bashrc set."
+
+gsettings set org.gnome.mutter dynamic-workspaces false
+
+gsettings set org.gnome.desktop.wm.preferences num-workspaces 5
+
+echo "5 workspaces set."
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-1 "['<Alt>1']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-2 "['<Alt>2']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-3 "['<Alt>3']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-4 "['<Alt>4']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-last "['<Alt>5']"
+
+
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-1 "['<Primary>1']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-2 "['<Primary>2']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-3 "['<Primary>3']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-4 "['<Primary>4']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-last "['<Primary>5']"
+
+echo "[*] Shortcuts alt and ctrl set."
+
+apt -y install terminator vim tmux
+echo "[*] Terminator installed"
+terminator &
+
+echo "[global_config]
+  window_state = maximise
+[keybindings]
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      type = Terminal
+    [[[window0]]]
+      parent = \"\"
+      type = Window
+[plugins]
+[profiles]
+  [[default]]
+    cursor_color = \"#aaaaaa\"
+    foreground_color = \"#ffffff\"" > ~/.config/terminator/config
+echo "[*] Terminator set."
+msfvenom -l payloads > /opt/payloads
+
