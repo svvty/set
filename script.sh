@@ -23,26 +23,5 @@ gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-last "['<Primar
 
 echo "[*] Shortcuts alt and ctrl set."
 
-apt -y install terminator vim tmux
-echo "[*] Terminator installed"
-terminator &
-
-echo "[global_config]
-  window_state = maximise
-[keybindings]
-[layouts]
-  [[default]]
-    [[[child1]]]
-      parent = window0
-      type = Terminal
-    [[[window0]]]
-      parent = \"\"
-      type = Window
-[plugins]
-[profiles]
-  [[default]]
-    cursor_color = \"#aaaaaa\"
-    foreground_color = \"#ffffff\"" > ~/.config/terminator/config
-echo "[*] Terminator set."
-msfvenom -l payloads > /opt/payloads
-
+apt update && apt -y install terminator vim tmux glances golang   
+echo "[*] Stuff installed"
